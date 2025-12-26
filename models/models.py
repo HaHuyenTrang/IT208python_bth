@@ -69,11 +69,11 @@ class HotelRoom(models.Model):
         string='Loại phòng'
     )
 
-    # _sql_constraints = [
-    #     ('room_name_unique', 'unique(name)', 'Số phòng đã tồn tại!'),
-    #     ('room_price_positive', 'CHECK(price_per_night > 0)',
-    #      'Giá phòng phải lớn hơn 0!')
-    # ]
+    _sql_constraints = [
+        ('room_name_unique', 'unique(name)', 'Số phòng đã tồn tại!'),
+        ('room_price_positive', 'CHECK(price_per_night > 0)',
+         'Giá phòng phải lớn hơn 0!')
+    ]
 
 
 # ==================================================
