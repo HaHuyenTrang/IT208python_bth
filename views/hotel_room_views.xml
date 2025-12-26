@@ -1,0 +1,9 @@
+<odoo>
+    <tree>
+        <field name="name"/>
+        <field name="floor"/>
+        <field name="price_per_night"/>
+        <field name="status"/>
+        <field name="type_id"/>
+    </tree>
+</odoo>

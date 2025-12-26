@@ -1,0 +1,63 @@
+<odoo>
+    <!-- FORM -->
+    <record id="view_booking_form" model="ir.ui.view">
+        <field name="name">hotel.booking.form</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" string="Xác nhận" type="object" class="btn-primary" modifiers="{'invisible': [('state', '!=', 'draft')]}"/>
+
+                    <button name="action_done" string="Hoàn thành" type="object" class="btn-success" modifiers="{'invisible': [('state', '!=', 'confirmed')]}"/>
+
+                    <field name="state" widget="statusbar" options="{'clickable': false}"/>
+                </header>
+
+
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="customer_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+
+                        <group>
+                            <field name="room_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="check_in"/>
+                            <field name="check_out"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="duration" readonly="1"/>
+                        <field name="total_amount" readonly="1" style="font-size:20px;font-weight:bold"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Dịch vụ thêm">
+                            <field name="service_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE -->
+    <record id="view_booking_tree" model="ir.ui.view">
+        <field name="name">hotel.booking.tree</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='draft'" decoration-success="state=='confirmed'" decoration-muted="state=='done'">
+                <field name="code"/>
+                <field name="customer_id"/>
+                <field name="room_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="total_amount"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

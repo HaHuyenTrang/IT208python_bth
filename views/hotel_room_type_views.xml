@@ -1,0 +1,6 @@
+<odoo>
+    <tree>
+        <field name="name"/>
+        <field name="code"/>
+    </tree>
+</odoo>

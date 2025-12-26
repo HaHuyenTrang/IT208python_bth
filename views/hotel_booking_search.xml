@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_booking_search" model="ir.ui.view">
+        <field name="name">hotel.booking.search</field>
+        <field name="model">hotel.booking</field>
+        <field name="arch" type="xml">
+            <search string="Tìm kiếm đặt phòng">
+
+                <!-- Search fields -->
+                <field name="code"/>
+                <field name="customer_id"/>
+                <field name="room_id"/>
+
+                <!-- Filters -->
+                <filter string="Nháp" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Xác nhận" name="confirmed" domain="[('state','=','confirmed')]"/>
+                <filter string="Hoàn thành" name="done" domain="[('state','=','done')]"/>
+
+                <separator/>
+
+                <!-- Group By -->
+                <group expand="0" string="Nhóm theo">
+                    <filter string="Khách hàng" name="group_customer" context="{'group_by':'customer_id'}"/>
+                    <filter string="Phòng" name="group_room" context="{'group_by':'room_id'}"/>
+                    <filter string="Trạng thái" name="group_state" context="{'group_by':'state'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+</odoo>
